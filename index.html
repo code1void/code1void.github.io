@@ -7,83 +7,54 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="dashboard" id="dashboard">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-left">
-                <h1>Dashboard</h1>
-            </div>
-            <div class="header-right">
-                <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">🌙</button>
-                <button class="bg-menu-toggle" id="bgMenuToggle" title="Change Background">🎨</button>
-            </div>
-        </header>
-
-        <!-- Background Menu -->
-        <div class="bg-menu" id="bgMenu">
-            <h3>Choose Background</h3>
-            <div class="bg-options">
-                <button class="bg-option" data-bg="gradient-blue" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></button>
-                <button class="bg-option" data-bg="gradient-sunset" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></button>
-                <button class="bg-option" data-bg="gradient-ocean" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></button>
-                <button class="bg-option" data-bg="gradient-forest" style="background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);"></button>
-                <button class="bg-option" data-bg="gradient-night" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);"></button>
-                <button class="bg-option" data-bg="gradient-warm" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></button>
-            </div>
+    <div class="dashboard">
+        <!-- Animated Background -->
+        <div class="background" id="background"></div>
+        
+        <!-- Background Selector -->
+        <div class="bg-selector">
+            <button class="bg-btn" data-bg="spring" title="Spring">🌸</button>
+            <button class="bg-btn" data-bg="summer" title="Summer">☀️</button>
+            <button class="bg-btn" data-bg="fall" title="Fall">🍂</button>
+            <button class="bg-btn" data-bg="winter" title="Winter">❄️</button>
+            <button class="bg-btn" data-bg="hacker-green" title="Hacker Green">💻</button>
+            <button class="bg-btn" data-bg="hacker-purple" title="Hacker Purple">🌌</button>
         </div>
 
         <!-- Main Content -->
-        <div class="main-content">
-            <!-- Left Panel -->
-            <div class="left-panel">
-                <!-- Time Widget -->
-                <div class="widget time-widget">
-                    <div class="time-display" id="timeDisplay">00:00:00</div>
-                    <div class="time-period" id="timePeriod">AM</div>
-                </div>
-
-                <!-- Date Widget -->
-                <div class="widget date-widget">
-                    <div class="date-day" id="dateDay">Monday</div>
-                    <div class="date-full" id="dateFull">January 1, 2024</div>
-                </div>
-
-                <!-- Weather Widget -->
-                <div class="widget weather-widget">
-                    <h3>Weather</h3>
-                    <div id="weatherContent">
-                        <p class="loading">Loading weather...</p>
-                    </div>
-                </div>
+        <div class="main-container">
+            <!-- Left: Time Display -->
+            <div class="time-section">
+                <div class="time-display" id="timeDisplay">00:00</div>
+                <div class="date-display" id="dateDisplay">Monday, January 1</div>
             </div>
 
-            <!-- Right Panel -->
-            <div class="right-panel">
-                <!-- Calendar Widget -->
-                <div class="widget calendar-widget">
+            <!-- Right: Side Calendar -->
+            <div class="side-calendar">
+                <div class="calendar-widget">
                     <div class="calendar-header">
-                        <button id="prevMonth">‹</button>
+                        <button id="prevMonth" class="month-btn">‹</button>
                         <h3 id="monthYear"></h3>
-                        <button id="nextMonth">›</button>
+                        <button id="nextMonth" class="month-btn">›</button>
                     </div>
                     <div class="calendar-weekdays">
-                        <div>Sun</div>
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
+                        <div>S</div>
+                        <div>M</div>
+                        <div>T</div>
+                        <div>W</div>
+                        <div>T</div>
+                        <div>F</div>
+                        <div>S</div>
                     </div>
                     <div class="calendar-days" id="calendarDays"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Browser Section -->
+        <!-- Bottom: Browser -->
         <div class="browser-section">
             <div class="browser-header">
-                <input type="text" id="urlInput" placeholder="Enter website URL or search..." class="url-input">
+                <input type="text" id="urlInput" placeholder="Search or enter URL..." class="url-input">
                 <button id="goButton" class="go-button">Go</button>
             </div>
             <div class="browser-content">

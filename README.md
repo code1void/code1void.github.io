@@ -1,70 +1,48 @@
 # Dashboard Website
 
-A beautiful, customizable dashboard with live time, weather, calendar, and browser integration.
+A modern, fullscreen dashboard with live animated backgrounds and minimalist design.
 
 ## Features
 
-✨ **Live Time Display** - Real-time clock with AM/PM indicator
-📅 **Calendar Widget** - Interactive calendar with month navigation
-🌤️ **Weather Widget** - Current weather information (requires internet)
-🎨 **Multiple Backgrounds** - 6 beautiful gradient presets
-🌓 **Dark/Light Mode** - Toggle between dark and light themes
+✨ **Live Time Display** - iPhone-style large clock display
+📅 **Side Calendar** - Compact calendar widget with day and date
+🎨 **Animated Backgrounds** - 6 beautiful dynamic backgrounds:
+   - 🌸 Spring - Calm pastel animation
+   - ☀️ Summer - Bright and warm effects
+   - 🍂 Fall - Warm autumn tones
+   - ❄️ Winter - Cool snowy effects
+   - 💻 Hacker Green - Matrix-style green terminal
+   - 🌌 Hacker Purple - Cyberpunk purple aesthetic
 🌐 **Browser Integration** - Search and browse websites
-💾 **Local Storage** - Your preferences are saved automatically
+💾 **Auto-Save** - Your background preference is remembered
 
 ## How to Use
 
-1. **Time & Date** - Located on the left panel, updates automatically
-2. **Weather** - Shows current conditions, updates every 10 minutes
-3. **Calendar** - Click ‹ and › to navigate between months
-4. **Change Background** - Click 🎨 button to select a gradient
-5. **Toggle Theme** - Click 🌙/☀️ to switch between dark/light mode
-6. **Browse Websites** - Enter a URL or search term in the browser section
+1. **View Time & Date** - Large centered time display with current date
+2. **Calendar** - Side widget showing current month, click < or > to navigate
+3. **Change Background** - Click the emoji buttons (top right) to switch between 6 themes
+4. **Browse** - Use the bottom browser bar to search or visit websites
 
-## Features Details
+## Background Themes
 
-### Time Display
-- Shows hours, minutes, and seconds
-- Displays AM/PM indicator
-- Updates every second
+### Seasonal Backgrounds
+- **Spring** - Light blue sky with soft green gradients
+- **Summer** - Bright yellow-gold with sunny effects
+- **Fall** - Warm oranges and deep reds
+- **Winter** - Cool blues with subtle snow effects
 
-### Calendar
-- Interactive month-by-month navigation
-- Highlights today's date
-- Shows the full month view
-
-### Weather
-- Displays current temperature in Celsius
-- Shows weather conditions
-- Displays humidity percentage
-- Updates every 10 minutes
-
-### Theme System
-- Light Mode (default) - Clean, bright interface
-- Dark Mode - Easy on the eyes for low-light environments
-- Preferences are saved in your browser
-
-### Backgrounds
-- Gradient Blue
-- Gradient Sunset
-- Gradient Ocean
-- Gradient Forest
-- Gradient Night
-- Gradient Warm
-
-### Browser
-- Enter full URLs (https://example.com)
-- Search using keywords
-- Press Enter or click Go to navigate
-- Browse in a sandboxed iframe
+### Hacker Backgrounds
+- **Hacker Green** - Classic terminal green with scan lines and grid effects
+- **Hacker Purple** - Dark cyberpunk aesthetic with glitch effects
 
 ## Technical Details
 
 - Pure HTML, CSS, and JavaScript
 - No external dependencies
-- Uses wttr.in API for weather data
+- Animated background effects using CSS keyframes
+- Glass-morphism design with backdrop filters
+- Fully responsive design
 - Local storage for preferences
-- Responsive design for mobile devices
 
 ## Browser Compatibility
 
@@ -74,10 +52,12 @@ Works on all modern browsers:
 - Safari
 - Opera
 
-## Notes
+## Design Features
 
-- The browser section uses iframes, so some websites may have restrictions
-- Weather data is fetched from wttr.in (no API key needed)
-- All settings are saved locally in your browser
+- Minimalist, clean layout
+- iPhone-inspired typography
+- Glass-effect widgets with blur
+- Smooth animations and transitions
+- Professional, modern aesthetic
 
-Enjoy your personalized dashboard! 🎉
+Enjoy your modern dashboard! 🚀

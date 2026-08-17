@@ -1,48 +1,30 @@
-// Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-const savedTheme = localStorage.getItem('theme') || 'light-mode';
+// Background Management
+const bgBtns = document.querySelectorAll('.bg-btn');
+const background = document.getElementById('background');
+const savedBg = localStorage.getItem('background') || 'spring';
 
-if (savedTheme === 'dark-mode') {
-    body.classList.add('dark-mode');
-    themeToggle.textContent = '☀️';
-}
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-    localStorage.setItem('theme', currentTheme);
-    themeToggle.textContent = currentTheme === 'dark-mode' ? '☀️' : '🌙';
-});
-
-// Background Menu Toggle
-const bgMenuToggle = document.getElementById('bgMenuToggle');
-const bgMenu = document.getElementById('bgMenu');
-
-bgMenuToggle.addEventListener('click', () => {
-    bgMenu.classList.toggle('active');
-});
-
-// Background Selection
-const bgOptions = document.querySelectorAll('.bg-option');
-const savedBg = localStorage.getItem('background') || 'gradient-blue';
-
-body.setAttribute('data-bg', savedBg);
-
-bgOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        const bgClass = option.getAttribute('data-bg');
-        body.setAttribute('data-bg', bgClass);
-        localStorage.setItem('background', bgClass);
-        bgMenu.classList.remove('active');
-    });
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!bgMenu.contains(e.target) && !bgMenuToggle.contains(e.target)) {
-        bgMenu.classList.remove('active');
+// Set initial background
+background.classList.add(savedBg);
+bgBtns.forEach(btn => {
+    if (btn.dataset.bg === savedBg) {
+        btn.classList.add('active');
     }
+});
+
+// Background selection
+bgBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const bgName = btn.dataset.bg;
+        
+        // Remove all background classes
+        bgBtns.forEach(b => b.classList.remove('active'));
+        background.className = 'background';
+        
+        // Add new background
+        background.classList.add(bgName);
+        btn.classList.add('active');
+        localStorage.setItem('background', bgName);
+    });
 });
 
 // Time Update
@@ -50,57 +32,23 @@ function updateTime() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
     
-    document.getElementById('timeDisplay').textContent = `${hours}:${minutes}:${seconds}`;
-    
-    const period = now.getHours() >= 12 ? 'PM' : 'AM';
-    document.getElementById('timePeriod').textContent = period;
+    document.getElementById('timeDisplay').textContent = `${hours}:${minutes}`;
 }
-
-setInterval(updateTime, 1000);
-updateTime();
 
 // Date Update
 function updateDate() {
     const now = new Date();
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
                    'July', 'August', 'September', 'October', 'November', 'December'];
     
     const dayName = days[now.getDay()];
     const monthName = months[now.getMonth()];
     const date = now.getDate();
-    const year = now.getFullYear();
     
-    document.getElementById('dateDay').textContent = dayName;
-    document.getElementById('dateFull').textContent = `${monthName} ${date}, ${year}`;
+    document.getElementById('dateDisplay').textContent = `${dayName}, ${monthName} ${date}`;
 }
-
-updateDate();
-
-// Weather Widget
-async function getWeather() {
-    try {
-        const response = await fetch('https://wttr.in/?format=j1');
-        const data = await response.json();
-        const current = data.current_condition[0];
-        
-        const weatherContent = document.getElementById('weatherContent');
-        weatherContent.innerHTML = `
-            <div class="weather-temp">${current.temp_C}°C</div>
-            <div class="weather-desc">${current.weatherDesc[0].value}</div>
-            <div class="weather-desc" style="margin-top: 5px;">Humidity: ${current.humidity}%</div>
-        `;
-    } catch (error) {
-        document.getElementById('weatherContent').innerHTML = `
-            <p class="weather-desc">Weather unavailable</p>
-        `;
-    }
-}
-
-getWeather();
-setInterval(getWeather, 600000); // Update every 10 minutes
 
 // Calendar
 let currentMonth = new Date().getMonth();
@@ -135,8 +83,8 @@ function renderCalendar() {
         const day = document.createElement('div');
         day.className = 'calendar-day current-month';
         
-        if (i === today.getDate() && 
-            currentMonth === today.getMonth() && 
+        if (i === today.getDate() &&
+            currentMonth === today.getMonth() &&
             currentYear === today.getFullYear()) {
             day.classList.add('today');
         }
@@ -188,7 +136,6 @@ function loadUrl() {
     
     // Add https:// if no protocol is specified
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
-        // Check if it looks like a search query
         if (!url.includes('.')) {
             url = `https://www.google.com/search?q=${encodeURIComponent(url)}`;
         } else {
@@ -205,3 +152,9 @@ urlInput.addEventListener('keypress', (e) => {
         loadUrl();
     }
 });
+
+// Update on load and every minute
+updateTime();
+updateDate();
+setInterval(updateTime, 60000); // Update every minute
+setInterval(updateDate, 60000);
