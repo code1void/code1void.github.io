@@ -7,52 +7,87 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="dashboard">
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <div class="splash-logo">Code1Void</div>
+            <div class="splash-subtitle">Dashboard</div>
+            <div class="splash-hint">Click anywhere to continue</div>
+            <div class="splash-loader">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard" id="dashboard">
         <!-- Animated Background -->
         <div class="background" id="background"></div>
+        <div class="rain" id="rain"></div>
         
-        <!-- Background Selector -->
-        <div class="bg-selector">
-            <button class="bg-btn" data-bg="spring" title="Spring">🌸</button>
-            <button class="bg-btn" data-bg="summer" title="Summer">☀️</button>
-            <button class="bg-btn" data-bg="fall" title="Fall">🍂</button>
-            <button class="bg-btn" data-bg="winter" title="Winter">❄️</button>
-            <button class="bg-btn" data-bg="hacker-green" title="Hacker Green">💻</button>
-            <button class="bg-btn" data-bg="hacker-purple" title="Hacker Purple">🌌</button>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Time Display (Centered) -->
+            <div class="time-display" id="timeDisplay">00:00</div>
+            <div class="date-display" id="dateDisplay">Monday, January 1</div>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-container">
-            <!-- Left: Time Display -->
-            <div class="time-section">
-                <div class="time-display" id="timeDisplay">00:00</div>
-                <div class="date-display" id="dateDisplay">Monday, January 1</div>
+        <!-- Side Calendar -->
+        <div class="side-calendar">
+            <div class="calendar-widget">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="month-btn">‹</button>
+                    <h3 id="monthYear"></h3>
+                    <button id="nextMonth" class="month-btn">›</button>
+                </div>
+                <div class="calendar-weekdays">
+                    <div>S</div>
+                    <div>M</div>
+                    <div>T</div>
+                    <div>W</div>
+                    <div>T</div>
+                    <div>F</div>
+                    <div>S</div>
+                </div>
+                <div class="calendar-days" id="calendarDays"></div>
             </div>
+        </div>
 
-            <!-- Right: Side Calendar -->
-            <div class="side-calendar">
-                <div class="calendar-widget">
-                    <div class="calendar-header">
-                        <button id="prevMonth" class="month-btn">‹</button>
-                        <h3 id="monthYear"></h3>
-                        <button id="nextMonth" class="month-btn">›</button>
-                    </div>
-                    <div class="calendar-weekdays">
-                        <div>S</div>
-                        <div>M</div>
-                        <div>T</div>
-                        <div>W</div>
-                        <div>T</div>
-                        <div>F</div>
-                        <div>S</div>
-                    </div>
-                    <div class="calendar-days" id="calendarDays"></div>
+        <!-- Bottom Tab Bar -->
+        <div class="tab-bar">
+            <!-- Background Tabs -->
+            <div class="tabs-container">
+                <div class="tab" data-bg="spring" title="Spring">
+                    <span class="tab-icon">◌</span>
+                </div>
+                <div class="tab" data-bg="summer" title="Summer">
+                    <span class="tab-icon">◉</span>
+                </div>
+                <div class="tab" data-bg="fall" title="Fall">
+                    <span class="tab-icon">◆</span>
+                </div>
+                <div class="tab" data-bg="winter" title="Winter">
+                    <span class="tab-icon">❄</span>
+                </div>
+                <div class="tab" data-bg="hacker-green" title="Hacker Green">
+                    <span class="tab-icon">></span>
+                </div>
+                <div class="tab" data-bg="hacker-purple" title="Hacker Purple">
+                    <span class="tab-icon">◆</span>
                 </div>
             </div>
+
+            <!-- Browser Tab -->
+            <div class="browser-tab">
+                <span class="browser-tab-title">Browser</span>
+                <button id="toggleBrowser" class="browser-toggle">^</button>
+            </div>
         </div>
 
-        <!-- Bottom: Browser -->
-        <div class="browser-section">
+        <!-- Browser Section -->
+        <div class="browser-section" id="browserSection">
             <div class="browser-header">
                 <input type="text" id="urlInput" placeholder="Search or enter URL..." class="url-input">
                 <button id="goButton" class="go-button">Go</button>
